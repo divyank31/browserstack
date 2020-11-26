@@ -8,7 +8,10 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.URL;
 
+
+
 public class JavaSample {
+    public static final String buildName = System.getenv("BROWSERSTACK_BUILD_NAME");
     public static final String AUTOMATE_USERNAME = "divyanksingh1";
     public static final String AUTOMATE_ACCESS_KEY = "CNnn3B4jqfsEFKbcJYyp";
     public static final String URL = "https://" + AUTOMATE_USERNAME + ":" + AUTOMATE_ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub";
@@ -20,7 +23,7 @@ public class JavaSample {
         caps.setCapability("browser_version", "latest");
         caps.setCapability("os", "Windows");
         caps.setCapability("name", "BStack-[Java] Sample Test"); // test name
-        caps.setCapability("build", "BStack Build Number 1"); // CI/CD job or build name
+        caps.setCapability("build", buildName); // CI/CD job or build name
         WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
         driver.get("https://www.google.com");
         WebElement element = driver.findElement(By.name("q"));
